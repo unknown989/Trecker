@@ -17,7 +17,7 @@ const db = new PrismaClient();
 const JWT_SECRET = env.JWT_SECRET;
 const EMAIL = env.ZOHOEMAIL;
 const PWD = env.ZOHOPWD;
-const API_URL = "http://localhost:3000";
+const API_URL = "http://trecker.vercel.app";
 
 const transporter = nodemailer.createTransport({
   host: "smtp.zoho.com",
@@ -463,6 +463,6 @@ app.post("/resetpwd/:tokenid", async (req, res, next) => {
   res.json(query);
 });
 
-app.listen(3001, () => {
-  console.log("Listening on port 3001...");
+app.listen(env.PORT || 8080, () => {
+  console.log("Listening...");
 });
