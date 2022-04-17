@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @unique @default(cuid())
+  firstname     String
+  lastname      String
+  passwordHash  String
+  email         String         @unique
+  image         String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  todos         Todo[]
+  passwordReset PasswordReset?
+}
+
+model Todo {
+  id        String   @id @unique @default(cuid())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  dueDate   DateTime
+  checked   Boolean
+  User      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String?
+}
+
+model PasswordReset {
+  code      String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  validDate DateTime
+  userId    String   @unique
+}

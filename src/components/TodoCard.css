@@ -1,0 +1,77 @@
+.todo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 10px #eee;
+  min-width: 40rem;
+  max-width: 45rem;
+  color: #444;
+  animation: showing-card 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+.todo-title {
+  user-select: none;
+}
+.todo-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px;
+  color: #444;
+}
+.todo-date {
+  color: #aaa;
+  user-select: none;
+}
+.todo-icon svg {
+  animation: icon-animation 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes icon-animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes showing-card {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translate(0%);
+  }
+}
+
+.checked {
+  background-color: #fafafa;
+  box-shadow: 0px 3px 10px #eaeaea;
+  color: #aaa;
+}
+.checked .todo-title {
+  text-decoration: line-through;
+}
+
+.todo-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.error-modal {
+  position: absolute;
+  margin-bottom: -5rem;
+  background-color: #ffb3b3;
+  color: #800;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #800;
+  outline: 2px solid #b06060;
+  transition: 150ms ease-in-out;
+  z-index: 100;
+}

@@ -1,0 +1,245 @@
+body {
+  font-family: Cairo;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #fafafa;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+/* Scrollbar */
+* {
+  scrollbar-width: 0.5rem;
+  scrollbar-color: #444 #eee;
+}
+
+*::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 8px;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #333;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 5rem;
+  color: #eee;
+  font-family: Cairo;
+  outline: none;
+  transition: 150ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.button:hover {
+  outline: 3px solid #aaa;
+}
+.button:focus {
+  outline: 3px solid #222;
+  outline-offset: -1px;
+}
+.button:active {
+  outline: 4px solid #222;
+  outline-offset: -1px;
+}
+
+.button:disabled {
+  pointer-events: none;
+  user-select: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.button:disabled:hover {
+  transform: scale(100%);
+}
+.button:disabled:active {
+  outline: none;
+}
+.button:disabled:focus {
+  outline: none;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-family: Cairo;
+  transition: 150ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  animation: outline-color 100ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  color: #aaa;
+}
+.input:focus {
+  color: #444;
+  outline: 3px solid #eee;
+}
+
+@keyframes outline-color {
+  from {
+    outline-color: #ccc;
+  }
+  to {
+    outline-color: #eee;
+  }
+}
+.checkbox {
+  all: unset;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  outline: 1px solid #444;
+  outline-offset: -1px;
+  border-radius: 4px;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  transition: 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+.checkbox::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
+  transition: 200ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  background-color: transparent;
+}
+.checkbox::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  padding: 1px;
+  transition: 200ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  border-radius: 4px;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.checkbox:checked::before {
+  background-color: #222;
+}
+.checkbox:checked::after {
+  background-color: #fafafa;
+}
+
+.form-error {
+  background-color: #ff6767;
+  width: 60%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 3px solid #dd5959;
+  color: #612a2a;
+  user-select: none;
+}
+.form-error p::before {
+  content: "• ";
+}
+.form-error span {
+  color: #8e3d3d;
+  font-size: 17px;
+}
+
+.spinner-dark {
+  background-color: #333 !important;
+}
+.spinner-dark::after,
+.spinner-dark::before {
+  background-color: #fff !important;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 100px;
+  position: relative;
+  background-color: #fff;
+  animation: spinner 0.8s ease infinite;
+}
+.spinner::after {
+  width: 80%;
+  height: 80%;
+  background-color: #333;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 100px;
+  position: absolute;
+  content: "";
+}
+.spinner::before {
+  width: 6px;
+  height: 2px;
+  position: absolute;
+  content: "";
+  background-color: #333;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.spinner-big{
+  width: 32px;
+  height: 32px;
+}
+.spinner-big::before{
+  width: 6px;
+  height: 4px;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.form-info {
+  background-color: #e4e4ff;
+  width: 60%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  color: #3f3f58;
+  border: 1px solid #acacc5;
+  box-shadow: 0px 3px 10px #eee;
+  user-select: none;
+}
+
+.separator {
+  margin-bottom: 10px;
+  border: 0.1px dashed #ddd;
+  border-radius: 100px;
+  max-width: 40rem;
+  width: 40rem;
+}

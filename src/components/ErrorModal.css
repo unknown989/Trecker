@@ -1,0 +1,22 @@
+.error-modal {
+  flex: 1;
+  position: absolute;
+  margin-top: 2px;
+  background-color: #ffb3b3;
+  color: #800;
+  padding: 10px;
+  min-width: 10rem;
+  max-width: 30rem;
+  border-radius: 8px;
+  border: 1px solid #800;
+  outline: 2px solid #b06060;
+  transition: 150ms ease-in-out;
+  z-index: 100;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+  top: 0;
+  right:1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}

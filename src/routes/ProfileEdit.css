@@ -1,0 +1,29 @@
+.sp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #aaa4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.ssp {
+  background-color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signup-form {
+  position: relative;
+}
+.locked {
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
