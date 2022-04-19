@@ -14,8 +14,9 @@ import Edit from "./routes/Edit";
 import Reset from "./routes/Reset";
 import ResetPWD from "./routes/ResetPWD";
 import ProfileEdit from "./routes/ProfileEdit";
+import Notfound from "./components/Notfound";
 
-const Notfound = () => {
+const NotfoundC = () => {
   return (
     <div
       style={{
@@ -27,7 +28,7 @@ const Notfound = () => {
         fontSize: 40,
       }}
     >
-      Page Not Found
+      <Notfound />
     </div>
   );
 };
@@ -49,7 +50,7 @@ function App() {
           <Route path="/reset" element={<Reset />} />
           <Route path="/resetpassword/:resetToken" element={<ResetPWD />} />
           <Route path="/profile/" element={<ProfileEdit />} />
-          <Route path="*" element={<Notfound />} />
+          <Route path="*" element={<NotfoundC />} />
         </Routes>
       </div>
       <Navbar className="navbar" />

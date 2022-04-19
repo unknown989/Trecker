@@ -8,6 +8,7 @@ import isAuth from "../../hooks/isAuth";
 
 import "./Home.css";
 import { IconPlus } from "@tabler/icons";
+import Spinner from "../components/Spinner";
 
 function AuthComponent() {
   return (
@@ -27,10 +28,10 @@ function AuthComponent() {
   );
 }
 function HomeComponent({ token }) {
-
   const url = new URL("/me/", API_URL);
   const [user, setUser] = useState({});
   const [todos, setTodos] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(url, {
@@ -41,28 +42,43 @@ function HomeComponent({ token }) {
       .then((json) => {
         setUser(json);
         setTodos(json.todos);
+        setIsLoading(false);
       });
   }, []);
 
   return (
     <div className="home-container">
       <div className="intro">
-        <h1 className="greeting">Hello again, {user.firstname}</h1>
-        <Link className="link add" to={"/new/"}>
-          <IconPlus />
-        </Link>
+        <h1 className="greeting">
+          Hello again, {isLoading ? "..." : user.firstname}
+        </h1>
+        {isLoading ? (
+          <div className="spinner-container">
+            <Spinner dark />
+          </div>
+        ) : (
+          <Link className="link add" to={"/new/"}>
+            <IconPlus />
+          </Link>
+        )}
       </div>
       <div className="separator"></div>
       <div className="todos-container">
-        {(function () {
-          if (todos.length > 0) {
-            return [...todos].map((todo) => {
-              return <TodoCard key={todo.id} tododata={todo} />;
-            });
-          } else {
-            return "No TODOs available";
-          }
-        })()}
+        {isLoading ? (
+          <div className="spinner-container">
+            <Spinner dark />
+          </div>
+        ) : (
+          (function () {
+            if (todos.length > 0) {
+              return [...todos].map((todo) => {
+                return <TodoCard key={todo.id} tododata={todo} />;
+              });
+            } else {
+              return "No TODOs available";
+            }
+          })()
+        )}
       </div>
     </div>
   );

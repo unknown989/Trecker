@@ -20,9 +20,9 @@ function Profile() {
   const [id, setId] = useState("");
   const [todos, setTodos] = useState([]);
   const [logged, token] = isAuth("jwt_token");
-  const [exist, setExist] = useState(false);
+  const [exist, setExist] = useState(true);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 

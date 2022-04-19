@@ -206,11 +206,11 @@ h6 {
   left: 50%;
   transform: translateX(-50%);
 }
-.spinner-big{
+.spinner-big {
   width: 32px;
   height: 32px;
 }
-.spinner-big::before{
+.spinner-big::before {
   width: 6px;
   height: 4px;
 }
@@ -224,6 +224,11 @@ h6 {
   }
 }
 
+.notfound-image {
+  width: 512px;
+  user-select: none;
+  pointer-events: none;
+}
 .form-info {
   background-color: #e4e4ff;
   width: 60%;

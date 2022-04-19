@@ -13,16 +13,20 @@ import { useNavigate } from "react-router-dom";
 import ErrorModal from "../components/ErrorModal";
 import rehypeSanitize from "rehype-sanitize";
 
+import Notfound from "../components/Notfound";
+
 function Todo() {
   const { todoId } = useParams();
   const [todo, setTodo] = useState({});
   const [loading, setLoading] = useState(true);
   const [logged, token] = isAuth("jwt_token");
-  const [exist, setExist] = useState(false);
+  const [exist, setExist] = useState(true);
   const [error, setError] = useState("");
+  const [loadingGeneralCard, setLoadingGeneralCard] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoadingGeneralCard(true);
     const get_url = new URL("/todo/" + todoId, API_URL);
     const request = new Request(get_url, {
       method: "get",
@@ -41,6 +45,7 @@ function Todo() {
         } else {
           setExist(false);
         }
+        setLoadingGeneralCard(false);
       })
 
       .catch((err) => console.error(err));
@@ -106,11 +111,11 @@ function Todo() {
   };
 
   {
-    if (exist) {
+    if (!loadingGeneralCard && exist) {
       return (
         <div className="todo-container">
           <ErrorModal error={error} callback={setError} />
-          {logged && (
+          {logged ? (
             <div className="todo">
               <div className="intro">
                 <h1
@@ -156,13 +161,23 @@ function Todo() {
                 {new Date(todo.dueDate).toUTCString()}
               </span>
             </div>
+          ) : (
+            <NotFound />
           )}
+        </div>
+      );
+    } else if (loadingGeneralCard) {
+      return (
+        <div className="todo-container">
+          <div className="spinner-container">
+            <Spinner dark />
+          </div>
         </div>
       );
     } else {
       return (
         <div className="todo-container">
-          <h1>TODO doesn't exist</h1>
+          {loadingGeneralCard ? <Spinner dark /> : <Notfound />}
         </div>
       );
     }

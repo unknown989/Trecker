@@ -65,3 +65,9 @@
   box-shadow: 0px 3px 10px #ddd;
   cursor: pointer;
 }
+.home-container .spinner-container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0px 4px 15px #ddd;
+}
