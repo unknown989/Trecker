@@ -41,7 +41,14 @@ function HomeComponent({ token }) {
       .then((res) => res.json())
       .then((json) => {
         setUser(json);
-        setTodos(json.todos);
+        const filtered_todos = [...json.todos].sort(
+          (a, b) => new Date(a.updatedAt) - new Date(b.updatedAt)
+        );
+        // https://stackoverflow.com/a/17387454/14762883
+        filtered_todos.sort((x, y) => {
+          return x === y ? 0 : x ? -1 : 1;
+        });
+        setTodos(filtered_todos);
         setIsLoading(false);
       });
   }, []);
