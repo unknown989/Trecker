@@ -7,14 +7,15 @@
 }
 .header-container {
   background-color: #fff;
-  width: 100%;
+  width:100%;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 5rem;
   gap: 20px;
   box-shadow: 0px 3px 20px #ddd;
-  position: relative;
+  top: 0;
+  position:static;
 }
 .header-container h1 {
   font-weight: 300;

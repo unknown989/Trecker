@@ -11,6 +11,7 @@ import "./Profile.css";
 import { IconPencil } from "@tabler/icons";
 import { IconTrash } from "@tabler/icons";
 import { Link } from "react-router-dom";
+import Notfound from "../components/Notfound";
 
 function Profile() {
   const [picture, setPicture] = useState("");
@@ -32,7 +33,7 @@ function Profile() {
   useEffect(() => {
     setLoading(true);
     setError("");
-    setExist(false);
+    setExist(true);
     const get_url = new URL("/me/", API_URL);
     const request = new Request(get_url, {
       method: "get",
@@ -143,7 +144,7 @@ function Profile() {
           )}
         </div>
       ) : (
-        <div>This user does not exist</div>
+        <div className="notfound-image"><Notfound /></div>
       )}
     </div>
   );

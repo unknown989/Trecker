@@ -246,5 +246,6 @@ h6 {
   border: 0.1px dashed #ddd;
   border-radius: 100px;
   max-width: 40rem;
-  width: 40rem;
+  min-width: 20rem;
 }
+
