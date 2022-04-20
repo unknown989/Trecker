@@ -160,6 +160,7 @@ function Todo() {
               <span className="todo-date">
                 {new Date(todo.dueDate).toUTCString()}
               </span>
+              <div className="empty"></div>
             </div>
           ) : (
             <NotFound />
